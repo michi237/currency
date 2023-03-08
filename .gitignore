@@ -22,3 +22,5 @@
 *.lock
 *.yaml
 /*.env
+.idea/currency.iml
+.idea/php.xml
