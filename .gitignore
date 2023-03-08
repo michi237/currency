@@ -24,3 +24,4 @@
 /*.env
 .idea/currency.iml
 .idea/php.xml
+public/.htaccess

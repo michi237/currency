@@ -78,4 +78,15 @@ class Currency
 
         return $this;
     }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'currency_code' => $this->getCurrencyCode(),
+            'exchange_rate' => $this->getExchangeRate(),
+            'uploaded_at' => $this->getUploadedAt()->format('Y-m-d H:i:s'),
+        ];
+    }
 }
