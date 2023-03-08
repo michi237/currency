@@ -28,7 +28,10 @@ class IndexController extends AbstractController
 
             $request = $client->request('GET', 'http://api.nbp.pl/api/exchangerates/tables/a/?format=json');
 
-            echo $request->getBody();
+            $data = json_decode($request->getBody(), true);
+            dd($data);
+
+
 
         }
     }
