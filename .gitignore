@@ -21,3 +21,4 @@
 *.json
 *.lock
 *.yaml
+/*.env
