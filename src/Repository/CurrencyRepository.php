@@ -39,6 +39,11 @@ class CurrencyRepository extends ServiceEntityRepository
         }
     }
 
+    public function getByCurrency(string $currency): ?Currency
+    {
+        return $this->findOneBy(['currency_code' => $currency]);
+    }
+
 //    /**
 //     * @return Currency[] Returns an array of Currency objects
 //     */

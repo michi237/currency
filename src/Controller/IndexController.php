@@ -44,13 +44,21 @@ class IndexController extends AbstractController
 
             $data = json_decode($request->getBody(), true)[0]['rates'];
 
-            foreach ($data as $item) {
-                $currency = new currency();
-                $currency->setName($item['currency']);
-                $currency->setCurrencyCode($item['code']);
-                $currency->setExchangeRate((float)$item['mid']);
-                $currency->setUploadedAt(new \DateTime());
 
+            foreach ($data as $item) {
+                $currency = $this->currencyRepository->getByCurrency($item['code']);
+                    if($currency == null) {
+                        $currency = new currency();
+                        $currency->setName($item['currency']);
+                        $currency->setCurrencyCode($item['code']);
+                        $currency->setExchangeRate((float)$item['mid']);
+                        $currency->setUploadedAt(new \DateTime());
+
+
+                    } else {
+                        $currency->setExchangeRate((float)$item['mid']);
+                        $currency->setUploadedAt(new \DateTime());
+                    }
                 $this->currencyRepository->save($currency, true);
             }
         } return new JsonResponse(['status' => true]);
